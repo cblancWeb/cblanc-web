@@ -1,0 +1,33 @@
+{
+  "products": [
+    {
+      "id": "0",
+      "collection": "Anton",
+      "group": "Bedding",
+      "type": "Fitted_sheet",
+      "image": ["images/anton_fitted_sheet_1.jpeg", "images/anton_fitted_sheet_2.jpeg"],
+      "price": [
+        {"90cm_x_190cm_x_30cm", "10"},
+        {"140cm_x_190cm_x_30cm", "20"},
+        {"160cm_x_200cm_x_30cm", "30"},
+        {"180cm_x_200cm_x_30cm", "40"}
+
+      ],
+      "composition": "100% Cotton, Quality Reinforced Canvas",
+      "description": "Anton fitted sheet  made of reinforced canvas 100% cotton (57 threads / cm²). The fitted sheet Anton is a print of micro patterns in the shape of a gray diamond on a black background. Bonnet of 30cm. Complete your Anton bedding set with duvet cover, bed sheet and pillowcase from the same collection."
+    },
+    {
+      "id": "0",
+      "collection": "Anton",
+      "group": "Bedding",
+      "type": "Pillowcase",
+      "image": ["images/anton_pillowcase_1.jpeg", "images/anton_pillowcase_2.jpeg"],
+      "price": [
+        ["50cm_x_70cm", "45"],
+        ["65cm_x_65cm", "65"]
+      ],
+      "composition": "100% Cotton, Quality Reinforced Canvas",
+      "description": "Anton Pillowcase  in 100% cotton reinforced canvas (57 threads / cm²).The pillowcase Anton will surprise you with its double facet. The front is adorned with a print of small triangles gray and black on a white background, while the back is dressed in a print of black stripes on a gray background. Finished in a suflet and opening with black buttons. Steering wheel 1,5cm. You can easily pair your Anton pillowcase with the neo anthracite pillowcase to complete your Anton bedding set. Dimensions: 65 x 65 cm; 50 x 70 cm."
+    }
+  ]
+}
