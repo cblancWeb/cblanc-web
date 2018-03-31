@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {AngularFirestore, AngularFirestoreCollection} from "angularfire2/firestore";
-import {GROUP, Item, SIZE, TYPE} from "../../shared/dataModel";
+import {GROUP, Product, SIZE, TYPE} from "../../assets/shared/dataModel";
 import {Observable} from "rxjs/Observable";
 import {AngularFireUploadTask} from "angularfire2/storage";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-upload',
@@ -10,9 +11,9 @@ import {AngularFireUploadTask} from "angularfire2/storage";
   styleUrls: ['./upload.component.scss']
 })
 export class UploadComponent implements OnInit {
-  prodCollection: AngularFirestoreCollection<Item>;
+  prodCollection: AngularFirestoreCollection<Product>;
 
-    anton_fitted_sheet: Item = {
+  anton_fitted_sheet: Product = {
     id: '0',
     collection: 'Anton',
     group: GROUP.Bed,
@@ -28,19 +29,37 @@ export class UploadComponent implements OnInit {
     description: 'Anton fitted sheet  made of reinforced canvas 100% cotton (57 threads / cm²). The fitted sheet Anton is a print of micro patterns in the shape of a gray diamond on a black background. Bonnet of 30cm. Complete your Anton bedding set with duvet cover, bed sheet and pillowcase from the same collection.'
   }
 
-  constructor(private afs: AngularFirestore){
+  constructor(private afs: AngularFirestore, private http: HttpClient){
     this.prodCollection = this.afs.collection('products');
   }
 
   ngOnInit(): void {
-    this.addItem('anton_fitted_sheet', this.anton_fitted_sheet)
+    // this.addItem('anton_fitted_sheet', this.anton_fitted_sheet);
+
+
+    let data: Product[];
+    this.getData().subscribe(res => {
+      data = res;
+      for (let i of data) {
+        this.addItem(i.collection + i.id, i)
+      }
+
+    });
 
   }
 
 
-  addItem(path:string, item: Item) {
+  addItem(path:string, item: Product) {
     this.prodCollection.doc(path).set(item).then(data => console.log("Loaded"));
   }
+
+
+  getData(): Observable<Product[]> {
+    let ref = 'assets/shared/db_test.json';
+    return this.http.get<Product[]>(ref);
+  }
+
+
 
 
 }
